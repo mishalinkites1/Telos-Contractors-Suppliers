@@ -1,0 +1,25 @@
+branch-defaults:
+  production:
+    environment: Telos-residents-server-production
+  staging:
+    environment: Telos-residents-server-dev
+environment-defaults:
+  Telos-residents-server-dev:
+    branch: null
+    repository: null
+  Telos-residents-server-production:
+    branch: null
+    repository: null
+global:
+  application_name: Telos-residents-server
+  default_ec2_keyname: aws-eb
+  default_platform: arn:aws:elasticbeanstalk:ap-southeast-1::platform/Node.js running
+    on 64bit Amazon Linux/4.4.3
+  default_region: ap-southeast-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: git
+  workspace_type: Application

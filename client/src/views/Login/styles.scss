@@ -1,0 +1,31 @@
+ 
+#login-page{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin:0 auto;
+    margin-top:-360px; 
+    -webkit-transform: translate(-50%, 40%);
+    -ms-transform: translate(-50%, 40%);
+    transform: translate(-50%, 35%);
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+    .login-btn{
+    	button{
+    		background-color:#009788!important; 
+    		span{
+		        font-size:14px!important;
+		        letter-spacing:0.5px!important;
+		        font-family: 'gt_walsheim_promedium'!important;
+		        text-transform: uppercase!important;		        
+    		}
+    	}
+    }
+}
+.forget{
+    font-family: inherit;
+    text-align: center;
+    margin-top: 6%;
+    color: #000 !important;
+}

@@ -1,0 +1,64 @@
+@import './theme/global.scss';
+
+
+@font-face {
+    font-family: 'gt_walsheim_probold';
+    src: url('/fonts/GT_Walsheim/gt-walsheim-pro-bold-webfont.woff2') format('woff2'),
+         url('/fonts/GT_Walsheim/gt-walsheim-pro-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gt_walsheim_prolight';
+    src: url('/fonts/GT_Walsheim/gt-walsheim-pro-light-webfont.woff2') format('woff2'),
+         url('/fonts/GT_Walsheim/gt-walsheim-pro-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gt_walsheim_promedium';
+    src: url('/fonts/GT_Walsheim/gt-walsheim-pro-medium-webfont.woff2') format('woff2'),
+         url('/fonts/GT_Walsheim/gt-walsheim-pro-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gt_walsheim_proregular';
+    src: url('/fonts/GT_Walsheim/gt-walsheim-pro-regular-webfont.woff2') format('woff2'),
+         url('/fonts/GT_Walsheim/gt-walsheim-pro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+ 
+*,
+html {
+    outline: 0;
+}
+html{
+  height: 100%;
+}
+body {
+    height: 100%;
+    color: #333;
+    background: #eee;
+    padding: 0;
+    margin: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+     font-family: 'Roboto', sans-serif!important;
+}
+
+a,
+a:focus,
+a:hover {
+    color: #1310ce;
+}
+ 
+ 

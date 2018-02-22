@@ -140,13 +140,6 @@ router.post('/userlogin', (req, res) => {
   .then(function(user) {
     console.log(user, "user")
     if (user) {
-      
-      if(user.deleted || user.isBlock) {
-        res.status(403).send({
-          success: false,
-          message: "Your profile is not active. Please contact to system administrator."
-        });
-      }
       if(user.password == password) {
         user = user.toJSON();
         //delete user.hashedPassword;
@@ -171,10 +164,42 @@ router.post('/userlogin', (req, res) => {
         });
       }
     } else {
+       User.findOne({account: account})
+      .then(function(users) {
+        if (users) {
+          console.log(users, "users")
+      if(users.password == password) {
+        users = users.toJSON();
+        //delete user.hashedPassword;
+        //delete user.salt;
+        //user.myMusic = [];
+        // if user is found and password is right
+        // create a token
+        var token = jwt.sign(users, tokenSecret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
+        console.log("helo", token)
+        res.json({
+          success: true,
+          message: "Login successfull.",
+          user: users,
+          token: token
+        });
+      } else {
+        res.status(403).send({
+          success: false,
+          message: "Invalid Email or Password."
+        });
+      }
+    }
+    else{
       res.status(403).send({
         success: false,
         message: "Invalid Email or Password."
       });
+    }
+    })
+      
     }
   });
 })

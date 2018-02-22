@@ -147,25 +147,19 @@ class actionPlansForm extends React.Component {
       <SideNavigation/>
      <section className="content">
         {/* Header */}
-        <header className="top-head container-fluid">
-          <button type="button" className="navbar-toggle pull-left" >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar" />
-            <span className="icon-bar" />
-            <span className="icon-bar" />
-          </button>
-          {/* Search */}
-         
-          {/* Left navbar */}
-          
-        </header>
+       <TopNavigation/>
         {/* Header Ends */}
         {/* Page Content Start */}
         {/* ================== */}
         <div className="wraper container-fluid">
           <div className="page-title"> 
             <h3 className="title">Tender Notices</h3> 
-            <button name="openPopup" className="pull-right btn-primary btn-block btn_notice"  onClick={this.handleOpen}> Add a Tender Notice </button> <br/>
+            <div>
+            { user.nature =="supplier" || user.nature == "contractor" ?
+                        <span></span> 
+                        : <div><button name="openPopup" className="pull-right btn-primary btn-block btn_notice"  onClick={this.handleOpen}> Add a Tender Notice </button> <br/> </div>}
+          
+            </div>
           </div>
           <div className="row">
             <div className="col-md-12">

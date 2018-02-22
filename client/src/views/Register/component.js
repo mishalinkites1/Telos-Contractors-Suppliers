@@ -42,7 +42,7 @@ class Register extends Component {
     const { registerUser } = this.props
     if(this.state.confirmPassword == this.state.password){
     const formdata = {
-      accountType: this.state.accountType,
+      nature: this.state.accountType,
       account: this.state.account,
       password: this.state.password,
       areaCode: this.state.areaCode,

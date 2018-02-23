@@ -65,12 +65,16 @@ class LoginForm extends Component {
    }
  }
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps, "nextProps")
     let user = window.localStorage.getItem("user")
     if (nextProps.phase === "error") {
       this.setState({ errMessage: nextProps.rxError.message, openSnackbar: true})
     }
     if(user){
       this.setState({loading: false})
+    }
+    if(!user && nextProps.phase === "error"){
+      this.setState({loading: false, message: "No user Found"})
     }
   }
 
@@ -114,6 +118,7 @@ class LoginForm extends Component {
             <h3 className="text-center m-t-10"> Sign In to <strong>Telos</strong> </h3>
           </div> 
           <div className="form-horizontal m-t-40" >
+          <span>{this.state.message}</span>
             <div className="form-group ">
               <div className="col-xs-12">
                 <input className="form-control" type="text" placeholder="Username" name="account" value={this.state.account} onChange={this.handleChange.bind(this)}/>

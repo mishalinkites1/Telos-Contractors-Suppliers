@@ -36,7 +36,7 @@ export default class SideNavigation extends React.Component {
                   <li><Link to="/notices">Past Tender</Link></li>
                 </ul>
               
-              <li className="has-submenu" data-toggle="collapse" data-target="#menu2"><Link to="#"><i className="ion-settings" /> <span className="nav-label">Contractors</span><span className="badge bg-success">New</span></Link>
+              <li className="has-submenu" data-toggle="collapse" data-target="#menu2"><Link to="#"><i className="ion-settings" /> <span className="nav-label">Contractors</span></Link>
                 </li><ul className="list-unstyled mytender-list collapse" id="menu2">
                   <li><Link to="grid.html">Consultants</Link></li>
                   <li><Link to="portlets.html">Construction</Link></li>

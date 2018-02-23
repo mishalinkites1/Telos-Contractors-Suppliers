@@ -29,7 +29,13 @@ export default class SideNavigation extends React.Component {
     };
     return (
         <header className="top-head container-fluid">
-          <a href="/login"><button type="button" className="navbar-toggle pull-right" onClick={this.handleLogout.bind(this)}>
+       <button type="button" className="navbar-toggle pull-left">
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                </button>
+          <a href="/login"><button type="button" className="navbar-toggle pull-right" style={{color: '#5e35b1'}} onClick={this.handleLogout.bind(this)}>
             Logout
           </button></a>
           {/* Search */}

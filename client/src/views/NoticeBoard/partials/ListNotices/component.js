@@ -248,7 +248,7 @@ class actionPlansForm extends React.Component {
             <div className="form-group">
               <div className="col-xs-12">
               <span>Effective Until</span>
-                <DatePicker hintText="Portrait Dialog" name="effectiveUntil" onChange={this.handleDateChange.bind(this)} />
+                <DatePicker hintText="Date" name="effectiveUntil" onChange={this.handleDateChange.bind(this)} />
               </div>
             </div>
             <div className="">

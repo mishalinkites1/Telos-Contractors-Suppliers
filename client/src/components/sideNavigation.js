@@ -20,7 +20,7 @@ export default class SideNavigation extends React.Component {
           {/* brand */}
           <div className="logo">
             <Link to="index.html" className="logo-expanded">
-              <i className="ion-social-buffer" />
+              <img src= "img/favicon.png" alt="" className="fav-icon"/>
               <span className="nav-label">TELOS</span>
             </Link>
           </div>

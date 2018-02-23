@@ -2130,3 +2130,7 @@ aside.left-panel.collapsed span.nav-label {
       margin-top: -10px;
       text-align: center;
 }
+.fav-icon{
+  width: 24px;
+    padding-right: 4px;
+}

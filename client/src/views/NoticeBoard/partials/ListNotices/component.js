@@ -145,8 +145,8 @@ class actionPlansForm extends React.Component {
          <Link to={data.image}><td>{data.noticeTitle}</td></Link>
           <td>{data.projectCategory}</td>
           <td>{data.description}</td>
-          <td>{moment(new Date(data.effectiveUntil)).format('dddd MMMM DD YYYY hh:mm:ss')}</td>
-           <td>{moment(new Date(data.postedOn)).format('dddd MMMM DD YYYY hh:mm:ss')}</td>
+          <td>{moment(new Date(data.effectiveUntil)).format('dddd MMMM DD YYYY ')}</td>
+           <td>{moment(new Date(data.postedOn)).format('dddd MMMM DD YYYY ')}</td>
       </tr>
     )
     })

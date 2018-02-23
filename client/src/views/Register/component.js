@@ -152,6 +152,7 @@ class Register extends Component {
             {this.state.show == true ?
              <div className="form-group">
               <div className="col-xs-12">
+              <span>Business Registry </span>
             <Dropzone onDrop={this.onDrop.bind(this)} className="dropzone_reg" onChange={(e)=>this._handleImageChange(e)} >
                 {this.state.imagePreviewUrl ?
                 <img src={this.state.imagePreviewUrl} className="" />

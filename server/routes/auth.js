@@ -76,9 +76,38 @@ router.post('/registerUser', (req, res) => {
         res.json({success : false, message: "網絡連接問題 |Network Error"});
       }
       if(!user){
-        const userRegister = new User(body);
+        var originalBlob = body.image
+        if (originalBlob && originalBlob !== '' && typeof(originalBlob !== "number" && originalBlob !== null)) {
+      var regex       = /^data:.+\/(.+);base64,(.*)$/;
+      var matches     = originalBlob.match(regex);
+      var base64Data  = matches && matches.length && matches[2] ? matches[2] : '';
+      var buf         = new Buffer(base64Data, 'base64');
+      var newName     = (new Date()).valueOf();
+      var newfilename = newName +'.png';   
+     
+      console.log("h1")
+      bucket.putObject({
+        Body: buf,
+        Key: 'registeredImages/'+newfilename,
+        ACL: 'public-read'
+      }, function(err, data1) {
+        if (err) {
+          console.log(err)
+        }
+        if(data1) {
+          console.log("h12")
+          body.imageUrl = "https://s3-ap-southeast-1.amazonaws.com/telospdf/registeredImages/"+newfilename
+           const userRegister = new User(body);
+          userRegister.save()
+          res.json({success : true, message: "User Registered Successfully"});
+        }
+      })
+        } else {
+      body.imageUrl = ''
+       const userRegister = new User(body);
         userRegister.save()
         res.json({success : true, message: "User Registered Successfully"});
+    }
       }
       else{
         res.json({success : false, message: "Email already Registered"});

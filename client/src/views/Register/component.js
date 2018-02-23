@@ -8,6 +8,7 @@ import { Redirect, Link } from 'react-router-dom'
 import SideNavigation from '../../components/sideNavigation'
 import TopNavigation from '../../components/topNavigation'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import Dropzone from 'react-dropzone'
 
 const required = value => value ? '' : 'Required'
 const PUBLIC_URL = process.env.PUBLIC_URL
@@ -31,6 +32,7 @@ class Register extends Component {
       errMessage:'',
       error: '',
       redirect: false,
+      show: false,
     }
      
   }
@@ -49,6 +51,12 @@ class Register extends Component {
     }
   handleAccountChange(e, value){
     this.setState({accountType: value})
+    if(value === "contractor"){
+      this.setState({show: true})
+    }
+    else{
+      this.setState({show: false})
+    }
   }
   handleSubmit(data) {   
     const { registerUser } = this.props
@@ -69,7 +77,8 @@ class Register extends Component {
       fax: this.state.fax,
       email: this.state.email,
       website: this.state.website,
-      contactPerson: this.state.contactPerson
+      contactPerson: this.state.contactPerson,
+      image: this.state.imagePreviewUrl
     }
     this.setState({error: ''})
     console.log(formdata, "formdata")
@@ -79,7 +88,31 @@ class Register extends Component {
     this.setState({error: "Password Does Not Match"})
   }
   }
-   
+   onDrop(files) {
+    this.setState({
+      files
+    });
+  }
+  _handleImageChange(e) {
+     var _URL = window.URL || window.webkitURL;
+    e.preventDefault();
+    let self=this
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    console.log(file, "file")
+    this.setState({fileType: file.type})
+    reader.onloadend = () => {
+        //if(this.width >= 640 && this.height >= 640){
+          self.setState({
+            file: file,
+            imagePreviewUrl: reader.result
+          });
+        // } else {
+        //   self.setState({openSnackbar: true , errMessage: "Please Select a Image Greater than 640 x 640"})
+        // }
+    }
+    var read = reader.readAsDataURL(file) 
+  }
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value })
   }
@@ -116,6 +149,19 @@ class Register extends Component {
                   </RadioButtonGroup>
               </div>
             </div>
+            {this.state.show == true ?
+             <div className="form-group">
+              <div className="col-xs-12">
+            <Dropzone onDrop={this.onDrop.bind(this)} className="dropzone_reg" onChange={(e)=>this._handleImageChange(e)} >
+                {this.state.imagePreviewUrl ?
+                <img src={this.state.imagePreviewUrl} className="" />
+                :
+                <p>Add Your Image</p>
+                }
+              </Dropzone>
+              </div>
+              </div>
+               : '' }
             <div className="form-group">
               <div className="col-xs-12">
               <span>Email</span>

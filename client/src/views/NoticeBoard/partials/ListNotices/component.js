@@ -228,31 +228,31 @@ class actionPlansForm extends React.Component {
         >
       
           <div className="form-group">
-              <div className="col-xs-12">
+              <div className="col-xs-12 form_dialog">
               <span>Notice Title</span>
                 <input className="form-control" type="email" name="noticeTitle" value={this.state.noticeTitle} onChange={this.handleChange.bind(this)}  required />
               </div>
             </div>
             <div className="form-group">
-              <div className="col-xs-12">
+              <div className="col-xs-12 form_dialog">
               <span>Project Category</span>
                 <input className="form-control" type="email" name="projectCategory" value={this.state.projectCategory} onChange={this.handleChange.bind(this)}  required />
               </div>
             </div>
             <div className="form-group">
-              <div className="col-xs-12">
+              <div className="col-xs-12 form_dialog">
               <span>Description</span>
                 <input className="form-control" type="email" name="description" value={this.state.description} onChange={this.handleChange.bind(this)}  required />
               </div>
             </div>
             <div className="form-group">
-              <div className="col-xs-12">
+              <div className="col-xs-12 form_dialog">
               <span>Effective Until</span>
                 <DatePicker hintText="Date" name="effectiveUntil" onChange={this.handleDateChange.bind(this)} />
               </div>
             </div>
             <div className="">
-              <div className="col-xs-12">
+              <div className="col-xs-12 form_dialog">
               <span>Image</span>
                 <Dropzone onDrop={this.onDrop.bind(this)} className="dropzone" onChange={(e)=>this._handleImageChange(e)} >
                  <div className="attached_files">     
@@ -266,9 +266,14 @@ class actionPlansForm extends React.Component {
               </Dropzone>
               </div><br/>
             </div><br/>
-            
+             <div className="col-xs-4 pull-right">
+            <button name="Cancel" onClick={this.handleClose} style={{    height: '38px'}} className="btn-primary btn-block">Close</button>
+            </div>
+            <div className="col-xs-4 pull-right">
             <button name="Submit" onClick={this.handleSubmit.bind(this)} style={{    height: '38px'}} className="btn-primary btn-block">Submit</button>
-        </Dialog>       
+            </div>
+            
+          </Dialog>       
       </div>    
     );
   }

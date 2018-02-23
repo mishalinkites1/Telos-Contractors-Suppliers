@@ -17,8 +17,7 @@ export default class SideNavigation extends React.Component {
   }
   handleLogout(){
     localStorage.removeItem("user")
-    this.setState({logout: "true"})
-    this.context.router.history.push('/login')
+    //localStorage.removeItem("Authorization")
   }
 
   render() {
@@ -28,22 +27,11 @@ export default class SideNavigation extends React.Component {
     const style = {
       margin: 12,
     };
-    if(this.state.logout == "true"){
-      return(
-        <Redirect to={`/login`}/>   
-      )
-    } 
     return (
         <header className="top-head container-fluid">
-          <button type="button" className="navbar-toggle pull-left" >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar" />
-            <span className="icon-bar" />
-            <span className="icon-bar" />
-          </button>
-          <button type="button" className="navbar-toggle pull-right" onClick={this.handleLogout.bind(this)}>
+          <a href="/login"><button type="button" className="navbar-toggle pull-right" onClick={this.handleLogout.bind(this)}>
             Logout
-          </button>
+          </button></a>
           {/* Search */}
          
           {/* Left navbar */}

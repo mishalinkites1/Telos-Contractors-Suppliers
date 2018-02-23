@@ -78,9 +78,9 @@ router.post('/submitTender', (req, res) => {
     function saveTender(avatarS3Url){
     const data = {}
     data.noticeTitle = body.noticeTitle
-    data.projectCategory = body.noticeTitle
-    data.description = body.noticeTitle
-    data.effectiveUntil = body.noticeTitle
+    data.projectCategory = body.projectCategory
+    data.description = body.description
+    data.effectiveUntil = body.effectiveUntil
     data.image = avatarS3Url
     const tender = new Tender(data);
       tender.save(function(err, tender){

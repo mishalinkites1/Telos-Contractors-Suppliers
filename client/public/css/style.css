@@ -58,10 +58,60 @@ html {
   position: relative;
   min-height: 100%;
 }
+.loader-section{
+    background-color: #00000085;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+ #loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -75px 0 0 -75px;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3f51b5;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
 
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
 
 /* 1.1 Loader */
-.pace {
+/*.pace {
   -webkit-pointer-events: none;
   pointer-events: none;
   -webkit-user-select: none;
@@ -137,7 +187,7 @@ html {
   0% { transform: rotate(0deg); transform: rotate(0deg); }
   100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
-
+*/
 
 /******** 2. Left Panel (aside navigation) ********/
 aside.left-panel {
@@ -148,6 +198,7 @@ aside.left-panel {
   height: 100%;
   top: 0px;
   left: 0px;
+  overflow: scroll;
 }
 
 aside.left-panel.collapsed {
@@ -257,7 +308,7 @@ aside:not(.collapsed) .navigation ul li.active ul {
   display: block;
 }
 
-.navigation ul li ul li a {
+.navigation ul li ul li a,.mytender-list li a{
   padding: 8px 25px 8px 55px;
   color: #838F9A;
   text-decoration: none;

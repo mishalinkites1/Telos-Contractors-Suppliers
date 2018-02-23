@@ -58,6 +58,7 @@ export default class dashboard extends React.Component {
           {/* Page Content Start */}
           {/* ================== */}
           <div className="wraper container-fluid">
+          
             <div className="page-title"> 
               <h3 className="title">Welcome !</h3> 
             </div>
@@ -65,9 +66,6 @@ export default class dashboard extends React.Component {
           {/* Page Content Ends */}
           {/* ================== */}
           {/* Footer Start */}
-          <footer className="footer">
-            2015 © Velonic.
-          </footer>
           {/* Footer Ends */}
         </section>
       </div>    

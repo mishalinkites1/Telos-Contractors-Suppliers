@@ -10,6 +10,7 @@ import MenuItem from 'material-ui/MenuItem'
 import { RadioButton } from 'material-ui/RadioButton'
 import RaisedButton from 'material-ui/RaisedButton';
 import './styles.scss'
+import {Dots} from 'react-activity';
 import {
   Checkbox,
   RadioButtonGroup,
@@ -44,6 +45,7 @@ class LoginForm extends Component {
       err: {},
       openSnackbar: false,
       errMessage:'',
+      loading: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -63,8 +65,12 @@ class LoginForm extends Component {
    }
  }
   componentWillReceiveProps(nextProps) {
+    let user = window.localStorage.getItem("user")
     if (nextProps.phase === "error") {
       this.setState({ errMessage: nextProps.rxError.message, openSnackbar: true})
+    }
+    if(user){
+      this.setState({loading: false})
     }
   }
 
@@ -74,7 +80,8 @@ class LoginForm extends Component {
       account: this.state.account,
       password: this.state.password
     }
-    loginUser(formdata)   
+    loginUser(formdata)
+    this.setState({loading: true})   
   }
 
   handleRequestClose() {
@@ -94,12 +101,11 @@ class LoginForm extends Component {
       token,
       phase
     } = this.props    
-    if(phase == "success"){
+    if(user){
       return(
-        <Redirect to={`/dashboard`}/>   
-      )
-    } 
-
+        <Redirect to = "/notices" />
+        )
+    }
     return (
       <div>
        <div className="wrapper-page animated fadeInDown">
@@ -142,6 +148,13 @@ class LoginForm extends Component {
             </div>
           </div>
         </div>
+        {this.state.loading == true ? 
+                
+          <div className="loader-section">
+             <div id="loader"></div>
+          </div>
+                      
+      : ''}
       </div>
   </div>
     )

@@ -18,7 +18,9 @@ import '../../styles.scss'
 import Dialog from 'material-ui/Dialog';
 import ReactDOM from 'react-dom'
 import Dropzone from 'react-dropzone'
+import ReactLoading from 'react-loading';
 import DatePicker from 'material-ui/DatePicker';
+import moment from 'moment'
 const listStyles = { paddingTop: 0, paddingBottom: 0 }
 const styles = {
   headline: {
@@ -38,7 +40,10 @@ class actionPlansForm extends React.Component {
     this.state = {
       notices: [],
       open: false,
-      files: []
+      files: [],
+      noticeTitle: '',
+      description: '',
+      projectCategory: ''
     };
   }
 
@@ -56,8 +61,11 @@ class actionPlansForm extends React.Component {
     console.log(nextProps, "ffffffffffff")
     if(nextProps.submitPhase === 'success'){
       console.log("yessss done")
-      this.setState({open: false});
+      this.setState({open: false, loading: false});
       this.componentWillMount()
+    }
+    if(nextProps.submitPhase === 'loading'){
+      this.setState({loading: true})
     }
     if(nextProps.fetchPhase === 'loading'){
       this.setState({isloading : true})
@@ -99,6 +107,7 @@ class actionPlansForm extends React.Component {
     formdata.name = "jheee"
     console.log("hello")
     submitNotice(formdata)
+    this.setState({loading: true})
   }
   _handleImageChange(e) {
      var _URL = window.URL || window.webkitURL;
@@ -133,18 +142,20 @@ class actionPlansForm extends React.Component {
     var notices = this.state.notices.map(function(data, key) {
     return(
       <tr>
-         <a href={data.image}><td>{data.noticeTitle}</td></a>
+         <Link to={data.image}><td>{data.noticeTitle}</td></Link>
           <td>{data.projectCategory}</td>
           <td>{data.description}</td>
-          <td>{data.effectiveUntil}</td>
-           <td>{data.postedOn}</td>
+          <td>{moment(new Date(data.effectiveUntil)).format('dddd MMMM DD YYYY hh:mm:ss')}</td>
+           <td>{moment(new Date(data.postedOn)).format('dddd MMMM DD YYYY hh:mm:ss')}</td>
       </tr>
     )
     })
     }
     return (
       <div>
+
       <SideNavigation/>
+
      <section className="content">
         {/* Header */}
        <TopNavigation/>
@@ -152,8 +163,12 @@ class actionPlansForm extends React.Component {
         {/* Page Content Start */}
         {/* ================== */}
         <div className="wraper container-fluid">
+
           <div className="page-title"> 
+
             <h3 className="title">Tender Notices</h3> 
+            
+           
             <div>
             { user.nature =="supplier" || user.nature == "contractor" ?
                         <span></span> 
@@ -197,6 +212,13 @@ class actionPlansForm extends React.Component {
         {/* Footer Start */}
         {/* Footer Ends */}
       </section>    
+        {this.state.loading == true ? 
+                
+          <div className="loader-section">
+             <div id="loader"></div>
+          </div>
+                      
+      : ''}
       <Dialog
           title="Add a Notice"
           modal={false}
@@ -204,6 +226,7 @@ class actionPlansForm extends React.Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
         >
+      
           <div className="form-group">
               <div className="col-xs-12">
               <span>Notice Title</span>
@@ -243,6 +266,7 @@ class actionPlansForm extends React.Component {
               </Dropzone>
               </div><br/>
             </div><br/>
+            
             <button name="Submit" onClick={this.handleSubmit.bind(this)} style={{    height: '38px'}} className="btn-primary btn-block">Submit</button>
         </Dialog>       
       </div>    

@@ -17,6 +17,7 @@ const styles = {
   },
   radioButton: {
     marginBottom: 16,
+    width: '50%',
   },
 };
 class Register extends Component {
@@ -29,12 +30,23 @@ class Register extends Component {
       openSnackbar: false,
       errMessage:'',
       error: '',
+      redirect: false,
     }
      
   }
- /* componentWillRecieveProps(nextProps){
-    console.log(nextProps, 'nextProps')
-  }*/
+  componentWillMount(event){   
+   console.log("hello")
+  }
+  componentWillUnmount(){
+   
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log("hello", nextProps)
+    if(nextProps.registerPhase == "success"){
+      this.setState({redirect: true})
+      this.render()
+    }
+    }
   handleAccountChange(e, value){
     this.setState({accountType: value})
   }
@@ -73,6 +85,11 @@ class Register extends Component {
   }
 
   render() {
+    if(this.state.redirect == true){
+      return(
+        <Redirect to = "/login" />
+        )
+    }
       return (
          <div className="wrapper-page animated fadeInDown">
         <div className="panel panel-color panel-primary">
@@ -199,7 +216,7 @@ class Register extends Component {
             </div>
             <div className="form-group m-t-30">
               <div className="col-sm-12 text-center">
-                <a href="login.html">Already have account?</a>
+                <Link to="/login">Already have account?</Link>
               </div>
             </div>
           </div>                                  

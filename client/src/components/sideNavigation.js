@@ -19,42 +19,43 @@ export default class SideNavigation extends React.Component {
       <aside className="left-panel">
           {/* brand */}
           <div className="logo">
-            <a href="index.html" className="logo-expanded">
+            <Link to="index.html" className="logo-expanded">
               <i className="ion-social-buffer" />
               <span className="nav-label">TELOS</span>
-            </a>
+            </Link>
           </div>
           {/* / brand */}
           {/* Navbar Start */}
           <nav className="navigation">
           
             <ul className="list-unstyled">
-              <li className="active" data-toggle="collapse" data-target="#demo"><a href=""><i className="ion-home" /> <span className="nav-label">Dashboard</span></a></li>
-              <li className="has-submenu" data-toggle="collapse" data-target="#menu1"><a href="#"><i className="ion-flask" /> <span className="nav-label">My Tender</span></a>
-                <ul className="list-unstyled collapse" id="menu1" >
-                  <li><a href="/notices">Current Tender</a></li>
-                  <li><a href="buttons.html">Past Tender</a></li>
-                </ul>
+              <li className="has-submenu" data-toggle="collapse" data-target="#menu1"><Link to="#"><i className="ion-flask" /> <span className="nav-label" >My Tender</span></Link>
               </li>
-              <li className="has-submenu" data-toggle="collapse" data-target="#menu2"><a href="#"><i className="ion-settings" /> <span className="nav-label">Contractors</span><span className="badge bg-success">New</span></a>
-                <ul className="list-unstyled collapse" id="menu2">
-                  <li><a href="grid.html">Consultants</a></li>
-                  <li><a href="portlets.html">Construction</a></li>
-                  <li><a href="widgets.html">Air Conditioning</a></li>
-                  <li><a href="nestable-list.html">Plumbing and Electrical</a></li>
-                  <li><a href="calendar.html">Fire Control</a></li>
-                  <li><a href="ui-sliders.html">Demoliation</a></li>
-                   <li><a href="ui-sliders.html">Architects</a></li>
-                    <li><a href="ui-sliders.html">Surveyors</a></li>
-                     <li><a href="ui-sliders.html">Interior Designers</a></li>
+                <ul className="list-unstyled mytender-list collapse" id="menu1" >
+                  <li className=""><Link to="/notices" >Current Tender</Link></li>
+                  <li><Link to="/notices">Past Tender</Link></li>
                 </ul>
-              </li>
-              <li className="has-submenu" data-toggle="collapse" data-target="#menu3"><a href="#"><i className="ion-compose" /> <span className="nav-label">Suppliers</span></a>
-                <ul className="list-unstyled collapse" id="menu3">
-                  <li><a href="form-elements.html">Materials</a></li>
-                  <li><a href="form-validation.html">Furniture</a></li>
+              
+              <li className="has-submenu" data-toggle="collapse" data-target="#menu2"><Link to="#"><i className="ion-settings" /> <span className="nav-label">Contractors</span><span className="badge bg-success">New</span></Link>
+                </li><ul className="list-unstyled mytender-list collapse" id="menu2">
+                  <li><Link to="grid.html">Consultants</Link></li>
+                  <li><Link to="portlets.html">Construction</Link></li>
+                  <li><Link to="widgets.html">Air Conditioning</Link></li>
+                  <li><Link to="nestable-list.html">Plumbing and Electrical</Link></li>
+                  <li><Link to="calendar.html">Fire Control</Link></li>
+                  <li><Link to="ui-sliders.html">Demoliation</Link></li>
+                   <li><Link to="ui-sliders.html">Architects</Link></li>
+                    <li><Link to="ui-sliders.html">Surveyors</Link></li>
+                     <li><Link to="ui-sliders.html">Interior Designers</Link></li>
                 </ul>
-              </li>
+              
+              <li className="has-submenu" data-toggle="collapse" data-target="#menu3"><Link to="#"><i className="ion-compose" /> <span className="nav-label">Suppliers</span></Link>
+                </li>
+                <ul className="list-unstyled mytender-list collapse" id="menu3">
+                  <li><Link to="form-elements.html">Materials</Link></li>
+                  <li><Link to="form-validation.html">Furniture</Link></li>
+                </ul>
+              
              
             </ul>
           </nav>

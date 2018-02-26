@@ -8,7 +8,8 @@ import IconButton from 'material-ui/IconButton'
 import NavigationClose from 'material-ui/svg-icons/navigation/arrow-upward'
 import SideNavigation from '../../components/sideNavigation';
 import TopNavigation from '../../components/topNavigation';
-
+import Translate from '../../components/translate-components';
+import {reactTranslateChangeLanguage} from '../../components/translate-components'
 import Header from '../../components/topNavigation'
 import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'

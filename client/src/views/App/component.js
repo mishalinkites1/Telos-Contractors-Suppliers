@@ -17,7 +17,9 @@ import Register from '../Register/container'
 import UserModel from '../../store/user/user-model'
 import * as Phase from '../../constants/phase'
 import Blank from '../Blank/container'
-import locale from 'browser-locale'
+import { reactTranslateChangeLanguage } from '../../components/translate-components'
+var locale = require('browser-locale')()
+
 
 const history = createHistory()
 const PUBLIC_URL = process.env.PUBLIC_URL
@@ -60,6 +62,17 @@ class App extends Component {
     phase: PropTypes.string,   
   }
  
+  componentDidMount(){
+    console.log(locale)
+    localStorage.setItem("language", locale)
+    let language = window.localStorage.getItem("language");
+    if (language == 'zh-HK') {
+      reactTranslateChangeLanguage('es');
+    }else{
+      reactTranslateChangeLanguage('en');
+    }
+  }
+
   render() {
     let userData ={}
     const {

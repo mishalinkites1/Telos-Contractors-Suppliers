@@ -129,6 +129,7 @@ class actionPlansForm extends React.Component {
     }
     var read = reader.readAsDataURL(file) 
   }
+   
   render() {  
     let self = this
     let user = JSON.parse(window.localStorage.getItem("user"))
@@ -156,7 +157,7 @@ class actionPlansForm extends React.Component {
 
       <SideNavigation/>
 
-     <section className="content">
+     <section className="content notice-page">
         {/* Header */}
        <TopNavigation/>
         {/* Header Ends */}
@@ -182,7 +183,7 @@ class actionPlansForm extends React.Component {
                 <div className="panel-heading">
                   <h3 className="panel-title">Current Notices</h3>
                 </div>
-                <div className="panel-body">
+                <div className="panel-body notices-table">
                   <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12">
                       <table id="datatable" className="table table-striped table-bordered text_table">

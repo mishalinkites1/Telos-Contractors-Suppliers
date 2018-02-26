@@ -1,0 +1,149 @@
+{ 
+  "Logout": {
+    "es": "登出"
+  },
+
+  "TELOS": {
+    "es": "天羅"
+  },
+  "Current Tender": {
+    "es": "現時招標"
+  },
+  "Consultants": {
+    "es": "顧問服務"
+  },
+  "Construction": {
+    "es": "建築工程"
+  },
+  "Air Conditioning": {
+    "es": "冷氣工程"
+  },
+  "Plumbing and Electrical": {
+    "es": "水電工程 "
+  },
+  "Fire Control": {
+    "es": "消防工程"
+  },
+  "Demoliation": {
+    "es": "清拆工程"
+  },
+  "Architects": {
+    "es": "建築師"
+  },
+  "Surveyors": {
+    "es": "測量師"
+  },
+  "Interior Designers": {
+    "es": "室內建築師"
+  },
+  "Suppliers": {
+    "es": "供應商"
+  },
+  "Materials": {
+    "es": "物料"
+  },
+  "Furniture": {
+    "es": "家具"
+  },
+  "My Tender": {
+    "es": "招標管理"
+  },
+  "Contractors": {
+    "es": "合約商"
+  },
+  "Telos": {
+    "es": "終極目的"
+  },
+  "Sign In to": {
+    "es": "登錄到"
+  },
+  "Remember me": {
+    "es": "記住我"
+  },
+  "Forgot your password?": {
+    "es": "忘記密碼"
+  },
+  "Create an account": {
+    "es": "創建新用戶"
+  },
+
+  "Log In": { "es": "登錄"},
+
+  "Create a new Account":{
+    "es": "創建新用戶"
+  },
+  "Account Type":{
+    "es": "用戶類別"
+  },
+  "Supplier":{
+    "es": "供應商"
+  },
+  "Contractor":{
+    "es": "合約商"
+  },
+  "Chinese Name":{
+    "es": "中文名"
+  },
+  "Address":{
+    "es": "地址"
+  },
+  "Category":{
+    "es": "類別"
+  },
+  "Phone":{
+    "es": "手提電話"
+  },
+  "Website":{
+    "es": "網頁"
+  },
+  "Contact Person":{
+    "es": "聯絡人"
+  },
+  "Password":{
+    "es": "密碼"
+  },
+  "Confirm Password":{
+    "es": "確認密碼"
+  },
+  "Email":{
+    "es": "電子郵件"
+  },
+
+  "Account":{
+    "es": "帳戶"
+  },
+  "Area Code":{
+    "es": "區號"
+  },
+  "English Name":{
+    "es": "英文名"
+  },
+  
+  "Fax":{
+    "es": "傳真"
+  },
+  "Address English":{
+    "es": "地址英文"
+  },
+  "Address Chinese":{
+    "es": "地址中文"
+  },
+  "I accept":{
+    "es": "我接受"
+  },
+  "Founded In":{
+    "es": "成立於"
+  },
+  "Terms and Conditions":{
+    "es": "條款和條件"
+  },
+  "Already have account?":{
+    "es": "已經有帳戶？"
+  },
+  "Account Type":{
+    "es": "帳戶類型"
+  },
+  "Register":{
+    "es": "寄存器"
+  }
+}

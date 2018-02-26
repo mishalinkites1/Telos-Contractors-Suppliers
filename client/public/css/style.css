@@ -198,7 +198,7 @@ aside.left-panel {
   height: 100%;
   top: 0px;
   left: 0px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 aside.left-panel.collapsed {
@@ -349,6 +349,7 @@ header .navbar-default .navbar-nav>li>a {
   margin: 12px 20px 8px 0px;
   display: block;
   padding-left: 0px;
+  z-index: 999;
 }
 
 .navbar-toggle .icon-bar {
@@ -2029,6 +2030,24 @@ aside.left-panel.collapsed span.nav-label {
     color: #fff;
   }
 }
+
+@media (max-width: 812px) {
+  aside.left-panel { 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 999;
+  }
+  .custome-side-nav{
+    left: -100% !important;
+  }
+  .custome-side-nav-0{
+    left: 0% !important;
+  }
+}
+
+
 @media (max-width: 768px) {
     
   aside.left-panel.collapsed {
@@ -2045,11 +2064,7 @@ aside.left-panel.collapsed span.nav-label {
     -moz-transition: translate3d(250px, 0px, 0px);
     -o-transition: translate3d(250px, 0px, 0px);
   }
-
-  aside.left-panel {
-    left: 100%;
-  }
-
+ 
   section.content {
     margin-left: 0px;
   }
@@ -2068,6 +2083,16 @@ aside.left-panel.collapsed span.nav-label {
 }
 
 @media (max-width: 767px) {
+  .notice-page .btn_notice{ 
+   width: 50% !important;
+  }
+  .notices-table tr td{
+    padding: 0 15px !important;
+    font-size: 13px !important;
+  }
+  .notices-table{
+    overflow: auto;
+  }
   .top-menu {
     float: right;
     margin: 0px;

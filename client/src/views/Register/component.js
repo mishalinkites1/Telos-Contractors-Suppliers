@@ -9,7 +9,10 @@ import SideNavigation from '../../components/sideNavigation'
 import TopNavigation from '../../components/topNavigation'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import Dropzone from 'react-dropzone'
-
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Translate from '../../components/translate-components';
+import {reactTranslateChangeLanguage} from '../../components/translate-components'
 const required = value => value ? '' : 'Required'
 const PUBLIC_URL = process.env.PUBLIC_URL
 const styles = {
@@ -33,14 +36,34 @@ class Register extends Component {
       error: '',
       redirect: false,
       show: false,
+      value: "en",
     }
-     
+     this.handleChangeSelect = this.handleChangeSelect.bind(this)
   }
   componentWillMount(event){   
-   console.log("hello")
+  let language = window.localStorage.getItem("language");
+    console.log(language, "language")
+    if (language === "zh-HK") {
+      //console.log("helfdfdl")
+      reactTranslateChangeLanguage('es');
+    }else{
+      console.log("hell")
+      reactTranslateChangeLanguage('en');
+    }
   }
   componentWillUnmount(){
    
+  }
+  componentDidMount(){
+    let language = window.localStorage.getItem("language");
+    console.log(language, "language")
+    if (language === "zh-HK") {
+      //console.log("helfdfdl")
+      reactTranslateChangeLanguage('es');
+    }else{
+      console.log("hell")
+      reactTranslateChangeLanguage('en');
+    }
   }
   componentWillReceiveProps(nextProps) {
     console.log("hello", nextProps)
@@ -116,34 +139,54 @@ class Register extends Component {
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value })
   }
-
+  handleChangeSelect(event, index, value) {
+    this.setState({value})
+    if (value === "es") {
+      //console.log("helfdfdl")
+      reactTranslateChangeLanguage('es');
+    }else{
+      console.log("hell")
+      reactTranslateChangeLanguage('en');
+    }
+  }
   render() {
     if(this.state.redirect == true){
       return(
         <Redirect to = "/login" />
         )
     }
+    const supplier = <p><Translate>Supplier</Translate></p>
+     const contractor = <p><Translate>Contractor</Translate></p>
       return (
          <div className="wrapper-page animated fadeInDown">
         <div className="panel panel-color panel-primary">
           <div className="panel-heading"> 
-            <h3 className="text-center m-t-10"> Create a new Account </h3>
+            <h3 className="text-center m-t-10"><Translate>Create a new Account</Translate></h3>
           </div> 
+          <div className=" pull-right">
+          <SelectField
+          floatingLabelText="Language"
+          value={this.state.value}
+          onChange={this.handleChangeSelect}
+        >
+          <MenuItem value="en" primaryText="English" />
+          <MenuItem value="es" primaryText="Chinese" />
+        </SelectField>
+        </div> 
           <span>{this.state.error}</span>
           <div className="form-horizontal m-t-40">
-
            <div className="form-group ">
               <div className="col-xs-12">
-              <span>Account Type</span><br/>
+              <span><Translate>Account Type</Translate></span><br/>
                 <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" className="radio_btn" valueSelected={ this.state.accountType} onChange={this.handleAccountChange.bind(this)}>
                   <RadioButton
                     value="supplier"
-                    label="Supplier"
+                    label={supplier}
                     style={styles.radioButton}
                   />
                   <RadioButton
                     value="contractor"
-                    label="Contractor"
+                    label={contractor}
                     style={styles.radioButton}
                   />
                   </RadioButtonGroup>
@@ -152,7 +195,7 @@ class Register extends Component {
             {this.state.show == true ?
              <div className="form-group">
               <div className="col-xs-12">
-              <span>Business Registry </span>
+              <span><Translate>Business Registry</Translate></span>
             <Dropzone onDrop={this.onDrop.bind(this)} className="dropzone_reg" onChange={(e)=>this._handleImageChange(e)} >
                 {this.state.imagePreviewUrl ?
                 <img src={this.state.imagePreviewUrl} className="" />
@@ -165,85 +208,85 @@ class Register extends Component {
                : '' }
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Email</span>
+              <span><Translate>Email</Translate></span>
                 <input className="form-control" type="email" name="email" value={this.state.email} onChange={this.handleChange.bind(this)}  required />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Account</span>
+              <span><Translate>Account</Translate></span>
                 <input className="form-control" type="text" name="account" value={this.state.account} onChange={this.handleChange.bind(this)} required placeholder="" />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Area Code</span>
+              <span><Translate>Area Code</Translate></span>
                 <input className="form-control" type="text" name="areaCode" value={this.state.areaCode} onChange={this.handleChange.bind(this)} required placeholder="" />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>English Name</span>
+              <span><Translate>English Name</Translate></span>
                 <input className="form-control" type="text" name="englishName" value={this.state.englishName} onChange={this.handleChange.bind(this)} required placeholder=" " />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Chinese Name</span>
+              <span><Translate>Chinese Name</Translate></span>
                 <input className="form-control" type="text" name="chineseName" value={this.state.chineseName} onChange={this.handleChange.bind(this)} required placeholder="" />
               </div>
             </div>
             <div className="form-group ">
               <div className="col-xs-12">
-              <span>Phone</span>
+              <span><Translate>Phone</Translate></span>
                 <input className="form-control " type="text" name="tel" required value={this.state.tel} onChange={this.handleChange.bind(this)} placeholder="" />
               </div>
             </div>
              <div className="form-group ">
               <div className="col-xs-12">
-              <span>Fax</span>
+              <span><Translate>Fax</Translate></span>
                 <input className="form-control " type="text" name="fax" required value={this.state.fax} onChange={this.handleChange.bind(this)} placeholder="" />
               </div>
             </div>
             <div className="form-group ">
               <div className="col-xs-12">
-              <span>Website</span>
+              <span><Translate>Website</Translate></span>
                 <input className="form-control " type="text" name="website" required value={this.state.website} onChange={this.handleChange.bind(this)} placeholder="" />
               </div>
             </div>
             <div className="form-group ">
               <div className="col-xs-12">
-              <span>Contact Person</span>
+              <span><Translate>Contact Person</Translate></span>
                 <input className="form-control " type="text" name="contactPerson" required value={this.state.contactPerson} onChange={this.handleChange.bind(this)} placeholder="" />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Address English</span>
+              <span><Translate>Address English</Translate></span>
                 <input className="form-control " type="text"  name="addEnglish" required value={this.state.addEnglish} onChange={this.handleChange.bind(this)} placeholder=" " />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Address Chinese</span>
+              <span><Translate>Address Chinese</Translate></span>
                 <input className="form-control " type="text" name="addChinese" required value={this.state.addChinese} onChange={this.handleChange.bind(this)} placeholder="" />
               </div>
             </div>
             <div className="form-group ">
               <div className="col-xs-12">
-              <span>Founded In</span>
+              <span><Translate>Founded In</Translate></span>
                 <input className="form-control "  type="text" name="foundedIn" value={this.state.foundedIn} onChange={this.handleChange.bind(this)} required placeholder="" />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-12">
-              <span>Password</span>
+              <span><Translate>Password</Translate></span>
                 <input className="form-control " type="password"  name="password" required value={this.state.password} onChange={this.handleChange.bind(this)}  placeholder="" />
               </div>
             </div>
              <div className="form-group">
               <div className="col-xs-12">
-              <span>Confirm Password</span>
+              <span><Translate>Confirm Password</Translate></span>
                 <input className="form-control " type="password" required name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange.bind(this)}  placeholder=" " />
               </div>
             </div>
@@ -252,18 +295,18 @@ class Register extends Component {
                 <label className="cr-styled">
                   <input type="checkbox" defaultChecked />
                   <i className="fa" /> 
-                  I accept <strong><a href="#">Terms and Conditions</a></strong>
+                  <Translate>I accept</Translate><strong><a href="#"><Translate>Terms and Conditions</Translate></a></strong>
                 </label>
               </div>
             </div>
             <div className="form-group text-right">
               <div className="col-xs-12">
-                <button className="btn btn-purple w-md" type="submit" onClick={this.handleSubmit.bind(this)}>Register</button>
+                <button className="btn btn-purple w-md" type="submit" onClick={this.handleSubmit.bind(this)}><Translate>Register</Translate></button>
               </div>
             </div>
             <div className="form-group m-t-30">
               <div className="col-sm-12 text-center">
-                <Link to="/login">Already have account?</Link>
+                <Link to="/login"><Translate>Already have account?</Translate></Link>
               </div>
             </div>
           </div>                                  

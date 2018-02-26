@@ -9,7 +9,8 @@ import store from './store'
 import AppContainer from './views/App/container'
 // import Login from './views/Login/container'
 import './index.scss'
-
+import { TranslateProvider } from './components/translate-components'
+import translations from './translations.json'
 const ctaColor = '#E74360'
 const muiTheme = getMuiTheme({
   palette: {
@@ -24,8 +25,11 @@ injectTapEventPlugin()
 
 ReactDOM.render(
     <MuiThemeProvider muiTheme={muiTheme}>
+    
       <Provider store={store}>
-        <AppContainer />
+        <TranslateProvider translations={translations} defaultLanguage={'en'}>
+       <AppContainer />
+      </TranslateProvider>
       </Provider>
     </MuiThemeProvider>,
     document.getElementById('root')
